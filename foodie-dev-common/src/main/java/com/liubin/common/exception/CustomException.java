@@ -1,4 +1,4 @@
-package com.liubin.execption;
+package com.liubin.common.exception;
 
 import lombok.Data;
 

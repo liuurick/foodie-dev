@@ -5,6 +5,10 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * 轮播图
+ * @author liubin
+ */
 @Data
 public class Carousel {
     /**

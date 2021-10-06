@@ -13,7 +13,7 @@ public interface UserService {
     public boolean queryUsernameIsExist(String username);
 
     /**
-     * 判断用户名是否存在
+     * 添加用户
      */
     public Users createUser(UserBO userBO);
 

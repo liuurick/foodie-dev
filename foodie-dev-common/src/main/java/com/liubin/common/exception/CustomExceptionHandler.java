@@ -1,4 +1,4 @@
-package com.liubin.execption;
+package com.liubin.common.exception;
 
 import com.liubin.common.utils.IMOOCJSONResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
