@@ -22,14 +22,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Api(value = "注册登录", tags = {"用于注册登录的相关接口"})
 @RestController
-@RequestMapping("passport")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @ApiOperation(value = "用户注册", notes = "用户注册", httpMethod = "POST")
-    @PostMapping("/regist")
+    @PostMapping("/register")
     public IMOOCJSONResult register(@RequestBody UserBO userBO,
                                     HttpServletRequest request,
                                     HttpServletResponse response) {
@@ -49,11 +49,7 @@ public class UserController {
         }
         Users userResult = userService.createUser(userBO);
 
-        userResult = setNullProperty(userResult);
-
-        CookieUtils.setCookie(request, response, "user",
-                JsonUtils.objectToJson(userResult), true);
-        return IMOOCJSONResult.ok();
+        return IMOOCJSONResult.ok(userResult);
     }
 
 
