@@ -2,7 +2,7 @@ package com.liubin.service.impl;
 
 import com.liubin.common.exception.CustomException;
 import com.liubin.mapper.UsersMapper;
-import com.liubin.pojo.BO.UserBO;
+import com.liubin.pojo.bo.UserBO;
 import com.liubin.pojo.Users;
 import com.liubin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
         Users user = new Users();
         String username = userBO.getUsername();
         String password = userBO.getPassword();
+
         if (!password.equals(userBO.getConfirmPassword())){
             throw new CustomException("密码不匹配");
         }
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
         userCriteria.andEqualTo("username", username);
         userCriteria.andEqualTo("password", password);
 
-        Users result = usersMapper.selectOneByExample(userCriteria);
+        Users result = usersMapper.selectOneByExample(userExample);
         return result;
     }
 }

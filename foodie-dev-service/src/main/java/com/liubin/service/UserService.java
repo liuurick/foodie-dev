@@ -1,6 +1,6 @@
 package com.liubin.service;
 
-import com.liubin.pojo.BO.UserBO;
+import com.liubin.pojo.bo.UserBO;
 import com.liubin.pojo.Users;
 
 /**

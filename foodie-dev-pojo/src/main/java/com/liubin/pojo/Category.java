@@ -25,8 +25,8 @@ public class Category {
     /**
      * 父id
      */
-    @Column(name = "father_id")
-    private Integer fatherId;
+    @Column(name = "parent_id")
+    private Integer parentId;
 
     /**
      * 图标

@@ -3,7 +3,7 @@ package com.liubin.common.enums;
 /**
  * @Description: 支付方式 枚举
  */
-public enum PayMethod {
+public enum PayMethodEnum {
 
 	WEIXIN(1, "微信"),
 	ALIPAY(2, "支付宝");
@@ -11,7 +11,7 @@ public enum PayMethod {
 	public final Integer type;
 	public final String value;
 
-	PayMethod(Integer type, String value){
+	PayMethodEnum(Integer type, String value){
 		this.type = type;
 		this.value = value;
 	}

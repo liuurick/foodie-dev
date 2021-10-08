@@ -1,16 +1,17 @@
 package com.liubin.common.enums;
 
 /**
- * @Desc: 是否 枚举
+ * @Desc: 性别 枚举
  */
-public enum YesOrNo {
-    NO(0, "否"),
-    YES(1, "是");
+public enum SexEnum {
+    woman(0, "女"),
+    man(1, "男"),
+    secret(2, "保密");
 
     public final Integer type;
     public final String value;
 
-    YesOrNo(Integer type, String value) {
+    SexEnum(Integer type, String value) {
         this.type = type;
         this.value = value;
     }

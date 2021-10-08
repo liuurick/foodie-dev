@@ -1,17 +1,16 @@
 package com.liubin.controller;
 
-import com.liubin.common.api.CommonResult;
 import com.liubin.common.utils.CookieUtils;
 import com.liubin.common.utils.IMOOCJSONResult;
 import com.liubin.common.utils.JsonUtils;
-import com.liubin.common.utils.MD5Utils;
-import com.liubin.pojo.BO.UserBO;
+import com.liubin.pojo.bo.UserBO;
 import com.liubin.pojo.Users;
 import com.liubin.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,7 +68,7 @@ public class UserController {
 
         // 实现登录
         Users userResult = userService.queryUserForLogin(username,
-                MD5Utils.getMD5Str(password));
+                DigestUtils.md5DigestAsHex(password.getBytes()));
 
         if (userResult == null) {
             return IMOOCJSONResult.errorMsg("用户名或密码不正确");
