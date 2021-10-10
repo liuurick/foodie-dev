@@ -4,10 +4,12 @@ import com.liubin.common.enums.YesOrNoEnum;
 import com.liubin.common.utils.IMOOCJSONResult;
 import com.liubin.pojo.Carousel;
 import com.liubin.pojo.Category;
+import com.liubin.pojo.vo.CategoryVO;
 import com.liubin.service.CarouselService;
 import com.liubin.service.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,8 +52,15 @@ public class IndexController {
 
     @ApiOperation(value = "获取商品子分类", notes = "获取商品子分类", httpMethod = "GET")
     @GetMapping("/subCat/{rootCatId}")
-    public IMOOCJSONResult subCat() {
+    public IMOOCJSONResult subCat(
+            @ApiParam(name = "rootCatId", value = "一级分类id", required = true)
+            @PathVariable Integer rootCatId) {
 
-        return IMOOCJSONResult.ok();
+        if (rootCatId == null) {
+            return IMOOCJSONResult.errorMsg("分类不存在");
+        }
+
+        List<CategoryVO> list = categoryService.getSubCatList(rootCatId);
+        return IMOOCJSONResult.ok(list);
     }
 }

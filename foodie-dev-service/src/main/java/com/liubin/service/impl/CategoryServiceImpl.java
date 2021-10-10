@@ -2,6 +2,7 @@ package com.liubin.service.impl;
 
 import com.liubin.mapper.CategoryMapper;
 import com.liubin.pojo.Category;
+import com.liubin.pojo.vo.CategoryVO;
 import com.liubin.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,4 +27,11 @@ public class CategoryServiceImpl implements CategoryService {
         List<Category> categoryList = categoryMapper.selectByExample(example);
         return categoryList;
     }
+
+    @Override
+    public List<CategoryVO> getSubCatList(Integer rootCatId) {
+        return categoryMapper.getSubCatList(rootCatId);
+    }
+
+
 }

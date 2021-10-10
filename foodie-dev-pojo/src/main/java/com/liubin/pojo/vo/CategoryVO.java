@@ -1,7 +1,6 @@
 package com.liubin.pojo.vo;
 
 import lombok.Data;
-
 import java.util.List;
 
 /**
@@ -14,8 +13,10 @@ public class CategoryVO {
     private Integer id;
     private String name;
     private String type;
-    private Integer fatherId;
+    private Integer parentId;
 
-    // 三级分类vo list
+    /**
+     * 三级分类vo list
+      */
     private List<SubCategoryVO> subCatList;
 }

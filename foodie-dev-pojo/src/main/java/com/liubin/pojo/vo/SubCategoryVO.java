@@ -1,18 +1,16 @@
 package com.liubin.pojo.vo;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * 三级分类
  * @author liubin
  */
-@Getter
-@Setter
+@Data
 public class SubCategoryVO {
 
     private Integer subId;
     private String subName;
     private String subType;
-    private Integer subFatherId;
+    private Integer subParentId;
 }
