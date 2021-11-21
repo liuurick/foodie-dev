@@ -1,7 +1,7 @@
 package com.liubin.controller;
 
 import com.liubin.common.enums.YesOrNoEnum;
-import com.liubin.common.utils.IMOOCJSONResult;
+import com.liubin.common.utils.JSONResult;
 import com.liubin.pojo.Carousel;
 import com.liubin.pojo.Category;
 import com.liubin.pojo.vo.CategoryVO;
@@ -31,11 +31,11 @@ public class IndexController {
 
     @ApiOperation(value = "轮播图", notes = "轮播图", httpMethod = "GET")
     @GetMapping("/carousels")
-    public IMOOCJSONResult carousel() {
+    public JSONResult carousel() {
 
         List<Carousel> carousels = carouselService.queryAll(YesOrNoEnum.YES.type);
 
-        return IMOOCJSONResult.ok(carousels);
+        return JSONResult.ok(carousels);
     }
 
     /**
@@ -45,22 +45,22 @@ public class IndexController {
      */
     @ApiOperation(value = "获取商品分类(一级分类)", notes = "获取商品分类(一级分类)", httpMethod = "GET")
     @GetMapping("/categorys")
-    public IMOOCJSONResult cats() {
+    public JSONResult cats() {
         List<Category> list = categoryService.queryAllRootLevelCat();
-        return IMOOCJSONResult.ok(list);
+        return JSONResult.ok(list);
     }
 
     @ApiOperation(value = "获取商品子分类", notes = "获取商品子分类", httpMethod = "GET")
     @GetMapping("/subCat/{rootCatId}")
-    public IMOOCJSONResult subCat(
+    public JSONResult subCat(
             @ApiParam(name = "rootCatId", value = "一级分类id", required = true)
             @PathVariable Integer rootCatId) {
 
         if (rootCatId == null) {
-            return IMOOCJSONResult.errorMsg("分类不存在");
+            return JSONResult.errorMsg("分类不存在");
         }
 
         List<CategoryVO> list = categoryService.getSubCatList(rootCatId);
-        return IMOOCJSONResult.ok(list);
+        return JSONResult.ok(list);
     }
 }

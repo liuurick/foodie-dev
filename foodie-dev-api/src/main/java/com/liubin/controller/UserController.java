@@ -1,7 +1,7 @@
 package com.liubin.controller;
 
 import com.liubin.common.utils.CookieUtils;
-import com.liubin.common.utils.IMOOCJSONResult;
+import com.liubin.common.utils.JSONResult;
 import com.liubin.common.utils.JsonUtils;
 import com.liubin.pojo.bo.UserBO;
 import com.liubin.pojo.Users;
@@ -29,9 +29,9 @@ public class UserController {
 
     @ApiOperation(value = "用户注册", notes = "用户注册", httpMethod = "POST")
     @PostMapping("/register")
-    public IMOOCJSONResult register(@RequestBody UserBO userBO,
-                                    HttpServletRequest request,
-                                    HttpServletResponse response) {
+    public JSONResult register(@RequestBody UserBO userBO,
+                               HttpServletRequest request,
+                               HttpServletResponse response) {
         String username = userBO.getUsername();
         String password = userBO.getPassword();
         String confirmPwd = userBO.getConfirmPassword();
@@ -39,31 +39,31 @@ public class UserController {
         if (StringUtils.isBlank(username) ||
                 StringUtils.isBlank(password) ||
                 StringUtils.isBlank(confirmPwd)) {
-            return IMOOCJSONResult.errorMsg("用户名或密码不能为空");
+            return JSONResult.errorMsg("用户名或密码不能为空");
         }
         // 查询用户是否存在
         boolean isExist = userService.queryUsernameIsExist(username);
         if (isExist){
-            return IMOOCJSONResult.errorMsg("用户名已经存在");
+            return JSONResult.errorMsg("用户名已经存在");
         }
         Users userResult = userService.createUser(userBO);
 
-        return IMOOCJSONResult.ok(userResult);
+        return JSONResult.ok(userResult);
     }
 
 
     @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
     @PostMapping("/login")
-    public IMOOCJSONResult login(@RequestBody UserBO userBO,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response) throws Exception {
+    public JSONResult login(@RequestBody UserBO userBO,
+                            HttpServletRequest request,
+                            HttpServletResponse response) throws Exception {
         String username = userBO.getUsername();
         String password = userBO.getPassword();
 
         // 判断用户名和密码必须不为空
         if (StringUtils.isBlank(username) ||
                 StringUtils.isBlank(password)) {
-            return IMOOCJSONResult.errorMsg("用户名或密码不能为空");
+            return JSONResult.errorMsg("用户名或密码不能为空");
         }
 
         // 实现登录
@@ -71,7 +71,7 @@ public class UserController {
                 DigestUtils.md5DigestAsHex(password.getBytes()));
 
         if (userResult == null) {
-            return IMOOCJSONResult.errorMsg("用户名或密码不正确");
+            return JSONResult.errorMsg("用户名或密码不正确");
         }
 
         userResult = setNullProperty(userResult);
@@ -79,17 +79,17 @@ public class UserController {
         CookieUtils.setCookie(request, response, "user",
                 JsonUtils.objectToJson(userResult), true);
 
-        return IMOOCJSONResult.ok(userResult);
+        return JSONResult.ok(userResult);
     }
 
     @ApiOperation(value = "用户退出登录", notes = "用户退出登录", httpMethod = "POST")
     @PostMapping("/logout")
-    public IMOOCJSONResult logout(@RequestParam String userId,
-                                  HttpServletRequest request,
-                                  HttpServletResponse response) {
+    public JSONResult logout(@RequestParam String userId,
+                             HttpServletRequest request,
+                             HttpServletResponse response) {
         // 清除用户的相关信息的cookie
         CookieUtils.deleteCookie(request, response, "user");
-        return IMOOCJSONResult.ok();
+        return JSONResult.ok();
     }
 
 

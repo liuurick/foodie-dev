@@ -5,7 +5,16 @@ package com.liubin.common.api;
  * @author liubin
  */
 public interface IErrorCode {
+
+    /**
+     * 错误码
+     * @return
+     */
     long getCode();
 
+    /**
+     * 信息描述
+     * @return
+     */
     String getMessage();
 }

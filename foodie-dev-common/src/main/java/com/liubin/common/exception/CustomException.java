@@ -7,6 +7,7 @@ import lombok.Data;
  */
 @Data
 public class CustomException extends RuntimeException{
+
     private String msg;
     private int code = 500;
 

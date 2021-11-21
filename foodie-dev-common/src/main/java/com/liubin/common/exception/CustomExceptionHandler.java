@@ -1,6 +1,6 @@
 package com.liubin.common.exception;
 
-import com.liubin.common.utils.IMOOCJSONResult;
+import com.liubin.common.utils.JSONResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
@@ -17,7 +17,7 @@ public class CustomExceptionHandler {
      * @return
      */
     @ExceptionHandler(MaxUploadSizeExceededException.class)
-    public IMOOCJSONResult handlerMaxUploadFile(MaxUploadSizeExceededException ex) {
-        return IMOOCJSONResult.errorMsg("文件上传大小不能超过500k，请压缩图片或者降低图片质量再上传！");
+    public JSONResult handlerMaxUploadFile(MaxUploadSizeExceededException ex) {
+        return JSONResult.errorMsg("文件上传大小不能超过500k，请压缩图片或者降低图片质量再上传！");
     }
 }
