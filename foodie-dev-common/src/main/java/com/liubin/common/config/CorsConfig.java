@@ -1,16 +1,11 @@
-package com.liubin.config;
+package com.liubin.common.config;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-/**
- * @author liubin
- */
 @Configuration
 public class CorsConfig {
 

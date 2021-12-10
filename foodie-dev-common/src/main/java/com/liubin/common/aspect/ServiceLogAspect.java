@@ -1,6 +1,5 @@
-package com.liubin.aspect;
+package com.liubin.common.aspect;
 
-import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
