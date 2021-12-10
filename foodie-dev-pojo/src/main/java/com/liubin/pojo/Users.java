@@ -1,10 +1,14 @@
 package com.liubin.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * @author liubin
+ */
 @Data
 public class Users {
     /**
@@ -59,15 +63,35 @@ public class Users {
     private Date birthday;
 
     /**
-     * 创建时间 创建时间
+     * 是否删除:0:正常,1删除
      */
-    @Column(name = "created_time")
-    private Date createdTime;
+    @TableField("is_delete")
+    private Integer isDelete;
+
 
     /**
-     * 更新时间 更新时间
+     * 创建时间
      */
-    @Column(name = "updated_time")
-    private Date updatedTime;
+    @TableField("gmt_create")
+    private Date gmtCreate;
+
+    /**
+     * 更新时间
+     */
+    @TableField("gmt_update")
+    private Date gmtUpdate;
+
+
+    /**
+     * 创建者id
+     */
+    @TableField("create_by")
+    private Long createBy;
+
+    /**
+     * 更新者id
+     */
+    @TableField("update_by")
+    private Long updateBy;
 
 }

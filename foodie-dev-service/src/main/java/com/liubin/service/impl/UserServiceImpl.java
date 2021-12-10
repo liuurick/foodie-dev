@@ -1,5 +1,7 @@
 package com.liubin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.liubin.common.enums.DeleteEnum;
 import com.liubin.common.exception.CustomException;
 import com.liubin.mapper.UsersMapper;
 import com.liubin.pojo.bo.UserBO;
@@ -10,27 +12,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.annotation.Resource;
+
 
 /**
  * @author liubin
  */
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Resource
     private UsersMapper usersMapper;
 
 
     @Override
     public boolean queryUsernameIsExist(String username) {
-        Example userExample = new Example(Users.class);
-        Example.Criteria userCriteria = userExample.createCriteria();
+        Users user = usersMapper.selectOne(new LambdaQueryWrapper<Users>()
+                .eq(Users::getUsername, username)
+                .eq(Users::getIsDelete, DeleteEnum.NORMAL.getCode()));
 
-        userCriteria.andEqualTo("username", username);
-
-        Users result = usersMapper.selectOneByExample(userExample);
-
-        return result == null ? false : true;
+        return user == null ? false : true;
     }
 
     @Override
