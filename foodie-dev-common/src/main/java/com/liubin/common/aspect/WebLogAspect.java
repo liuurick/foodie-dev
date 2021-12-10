@@ -8,6 +8,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -87,12 +88,19 @@ public class WebLogAspect {
      */
     @Around("logPoint()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        long startTime = System.currentTimeMillis();
+        StopWatch sw = new StopWatch();
+        sw.start();
         Object result = proceedingJoinPoint.proceed();
-        // 打印出参
-        log.info("Response Args  : {}", new Gson().toJson(result));
+        sw.stop();
         // 执行耗时
-        log.info("Time-Consuming : {} ms", System.currentTimeMillis() - startTime);
+        long takeTime = sw.getTotalTimeMillis();
+        if (takeTime > 3000) {
+            log.error("====== 执行结束，耗时：{} 毫秒 ======", takeTime);
+        } else if (takeTime > 2000) {
+            log.warn("====== 执行结束，耗时：{} 毫秒 ======", takeTime);
+        } else {
+            log.info("====== 执行结束，耗时：{} 毫秒 ======", takeTime);
+        }
         return result;
     }
 
