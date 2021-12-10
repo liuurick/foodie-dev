@@ -15,6 +15,7 @@
         <module>foodie-dev-api</module>
         <module>generate</module>
         <module>foodie-dev-security</module>
+        <module>foodie-admin</module>
     </modules>
 
     <packaging>pom</packaging>
