@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,7 +15,8 @@ import java.util.Date;
  */
 @Data
 @TableName("category")
-public class Category implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class Category extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -65,36 +67,5 @@ public class Category implements Serializable {
      */
     @TableField("bg_color")
     private String bgColor;
-
-    /**
-     * 是否删除:0:正常,1删除
-     */
-    @TableField("is_delete")
-    private Integer isDelete;
-
-    /**
-     * 创建时间
-     */
-    @TableField("gmt_create")
-    private Date gmtCreate;
-
-    /**
-     * 更新时间
-     */
-    @TableField("gmt_update")
-    private Date gmtUpdate;
-
-
-    /**
-     * 创建者id
-     */
-    @TableField("create_by")
-    private Long createBy;
-
-    /**
-     * 更新者id
-     */
-    @TableField("update_by")
-    private Long updateBy;
 
 }

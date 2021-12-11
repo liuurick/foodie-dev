@@ -1,9 +1,10 @@
 package com.liubin.foodie.controller;
 
+
 import com.liubin.common.annotation.WebLog;
+import com.liubin.common.api.CommonResult;
 import com.liubin.common.config.Summary;
 import com.liubin.common.enums.YesOrNoEnum;
-import com.liubin.common.utils.JSONResult;
 import com.liubin.foodie.pojo.Carousel;
 import com.liubin.foodie.pojo.Category;
 import com.liubin.foodie.pojo.vo.CategoryVO;
@@ -37,11 +38,8 @@ public class IndexController {
     @ApiOperation(value = "轮播图", notes = "轮播图", httpMethod = "GET")
     @GetMapping("/carousels")
     @WebLog(description = "轮播图")
-    public JSONResult carousel() {
-
-        List<Carousel> carousels = carouselService.queryAll(YesOrNoEnum.YES.type);
-
-        return JSONResult.ok(carousels);
+    public CommonResult<List<Carousel>> carousel() {
+        return CommonResult.success(carouselService.queryAll(YesOrNoEnum.YES.type));
     }
 
     /**
@@ -52,23 +50,20 @@ public class IndexController {
     @ApiOperation(value = "获取商品分类(一级分类)", notes = "获取商品分类(一级分类)", httpMethod = "GET")
     @GetMapping("/categorys")
     @WebLog(description = "获取商品分类(一级分类)")
-    public JSONResult cats() {
-        List<Category> list = categoryService.queryAllRootLevelCat();
-        return JSONResult.ok(list);
+    public CommonResult<List<Category>> cats() {
+        return CommonResult.success(categoryService.queryAllRootLevelCat());
     }
 
     @ApiOperation(value = "获取商品子分类", notes = "获取商品子分类", httpMethod = "GET")
     @GetMapping("/subCat/{rootCatId}")
     @WebLog(description = "获取商品子分类")
-    public JSONResult subCat(
+    public CommonResult<List<CategoryVO>> subCat(
             @ApiParam(name = "rootCatId", value = "一级分类id", required = true)
             @PathVariable Integer rootCatId) {
 
         if (rootCatId == null) {
-            return JSONResult.errorMsg("分类不存在");
+            return CommonResult.failed("分类不存在");
         }
-
-        List<CategoryVO> list = categoryService.getSubCatList(rootCatId);
-        return JSONResult.ok(list);
+        return CommonResult.success(categoryService.getSubCatList(rootCatId));
     }
 }
