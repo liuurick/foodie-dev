@@ -24,10 +24,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> queryAllRootLevelCat() {
-        List<Category> categoryList = categoryMapper.selectList(new LambdaQueryWrapper<Category>()
+        return categoryMapper.selectList(new LambdaQueryWrapper<Category>()
                 .eq(Category::getType, 1)
                 .eq(Category::getIsDelete, DeleteEnum.NORMAL.getCode()));
-        return categoryList;
     }
 
     @Override
