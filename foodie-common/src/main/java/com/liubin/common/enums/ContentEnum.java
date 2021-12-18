@@ -2,6 +2,9 @@ package com.liubin.common.enums;
 
 import com.alibaba.fastjson.annotation.JSONType;
 
+/**
+ * @author liubin
+ */
 @JSONType(serializer = EnumBaseSerializer.class)
 public interface ContentEnum {
 

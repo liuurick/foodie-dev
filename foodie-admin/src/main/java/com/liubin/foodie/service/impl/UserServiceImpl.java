@@ -7,6 +7,7 @@ import com.liubin.foodie.mapper.UsersMapper;
 import com.liubin.foodie.pojo.Users;
 import com.liubin.foodie.pojo.bo.UserBO;
 import com.liubin.foodie.service.UserService;
+import org.springframework.jdbc.core.namedparam.NamedParameterUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import tk.mybatis.mapper.entity.Example;
@@ -56,7 +57,7 @@ public class UserServiceImpl implements UserService {
         userCriteria.andEqualTo("username", username);
         userCriteria.andEqualTo("password", password);
 
-        Users result = usersMapper.selectOneByExample(userExample);
-        return result;
+        //Users result = usersMapper.selectOneByExample(userExample);
+        return null;
     }
 }

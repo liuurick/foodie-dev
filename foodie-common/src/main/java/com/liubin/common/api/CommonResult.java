@@ -8,14 +8,17 @@ import lombok.Data;
  */
 @Data
 public class CommonResult<T> {
+
     /**
      * 状态码
      */
     private long code;
+
     /**
      * 提示信息
      */
     private String message;
+
     /**
      * 数据封装
      */

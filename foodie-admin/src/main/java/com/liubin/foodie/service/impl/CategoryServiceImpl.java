@@ -1,8 +1,6 @@
 package com.liubin.foodie.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.liubin.common.enums.DeleteEnum;
 import com.liubin.foodie.mapper.CategoryMapper;
 import com.liubin.foodie.pojo.Category;
@@ -31,7 +29,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryVO> getSubCatList(Integer rootCatId) {
-        return categoryMapper.getSubCatList(rootCatId);
+        // return categoryMapper.getSubCatList(rootCatId);
+        return null;
     }
 
 
