@@ -8,8 +8,9 @@ import lombok.Data;
 @Data
 public class CustomException extends RuntimeException{
 
-    private String msg;
     private int code = 500;
+    private String msg;
+
 
     public CustomException(String msg) {
         super(msg);

@@ -69,7 +69,7 @@ public class FoodieConfig {
 
     public void setCopyrightYear(String copyrightYear)
     {
-        com.liubin.common.config.FoodieConfig.copyrightYear = copyrightYear;
+        FoodieConfig.copyrightYear = copyrightYear;
     }
 
     public static boolean isDemoEnabled()
