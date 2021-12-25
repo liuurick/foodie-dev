@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
                 .eq(Users::getUsername, username)
                 .eq(Users::getIsDelete, DeleteEnum.NORMAL.getCode()));
 
-        return user == null ? false : true;
+        return user != null;
     }
 
     @Override
