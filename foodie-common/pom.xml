@@ -12,6 +12,7 @@
     <groupId>com.liubin.foodie</groupId>
     <artifactId>foodie-common</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>foodie-common</name>
     <description>Spring Boot</description>
 
@@ -80,18 +81,18 @@
             <version>2.6</version>
         </dependency>
 
+
+        <!--swagger引入-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${swagger.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
@@ -121,7 +122,5 @@
             <version>3.4.1</version>
         </dependency>
     </dependencies>
-
-
 
 </project>

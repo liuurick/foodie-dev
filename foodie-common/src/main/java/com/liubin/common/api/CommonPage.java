@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,10 +14,25 @@ import java.util.List;
 @Data
 public class CommonPage<T> {
 
+    /**
+     * 当前页码
+     */
     private Integer pageNum;
+    /**
+     * 每页数量
+     */
     private Integer pageSize;
+    /**
+     * 总页数
+     */
     private Integer totalPage;
+    /**
+     * 总条数
+     */
     private Long total;
+    /**
+     * 分页数据
+     */
     private List<T> list;
 
     /**
@@ -45,5 +61,4 @@ public class CommonPage<T> {
         result.setList(pageInfo.getContent());
         return result;
     }
-
 }
