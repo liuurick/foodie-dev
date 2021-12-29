@@ -1,37 +1,39 @@
 package com.liubin.foodie.admin.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
-
-@Table(name = "items_param")
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ItemsParam {
+@TableName("items_param")
+public class ItemsParam extends BaseEntity{
+    
     /**
      * 商品参数id
      */
-    @Id
-    private String id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 商品外键id
      */
-    @Column(name = "item_id")
+    @TableField("item_id")
     private String itemId;
 
     /**
      * 产地 产地，例：中国江苏
      */
-    @Column(name = "produc_place")
+    @TableField("produc_place")
     private String producPlace;
 
     /**
      * 保质期 保质期，例：180天
      */
-    @Column(name = "foot_period")
+    @TableField("foot_period")
     private String footPeriod;
 
     /**
@@ -42,19 +44,19 @@ public class ItemsParam {
     /**
      * 生产厂名 生产厂名，例：大灰狼工厂
      */
-    @Column(name = "factory_name")
+    @TableField("factory_name")
     private String factoryName;
 
     /**
      * 生产厂址 生产厂址，例：大灰狼生产基地
      */
-    @Column(name = "factory_address")
+    @TableField("factory_address")
     private String factoryAddress;
 
     /**
      * 包装方式 包装方式，例：袋装
      */
-    @Column(name = "packaging_method")
+    @TableField("packaging_method")
     private String packagingMethod;
 
     /**
@@ -65,24 +67,12 @@ public class ItemsParam {
     /**
      * 存储方法 存储方法，例：常温5~25°
      */
-    @Column(name = "storage_method")
+    @TableField("storage_method")
     private String storageMethod;
 
     /**
      * 食用方式 食用方式，例：开袋即食
      */
-    @Column(name = "eat_method")
+    @TableField("eat_method")
     private String eatMethod;
-
-    /**
-     * 创建时间
-     */
-    @Column(name = "created_time")
-    private Date createdTime;
-
-    /**
-     * 更新时间
-     */
-    @Column(name = "updated_time")
-    private Date updatedTime;
 }

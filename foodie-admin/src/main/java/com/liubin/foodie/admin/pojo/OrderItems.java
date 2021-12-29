@@ -1,54 +1,57 @@
 package com.liubin.foodie.admin.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Table(name = "order_items")
+@EqualsAndHashCode(callSuper = true)
+@TableName("order_items")
 @Data
-public class OrderItems {
+public class OrderItems extends BaseEntity{
     /**
      * 主键id
      */
-    @Id
-    private String id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 归属订单id
      */
-    @Column(name = "order_id")
+    @TableField("order_id")
     private String orderId;
 
     /**
      * 商品id
      */
-    @Column(name = "item_id")
+    @TableField("item_id")
     private String itemId;
 
     /**
      * 商品图片
      */
-    @Column(name = "item_img")
+    @TableField("item_img")
     private String itemImg;
 
     /**
      * 商品名称
      */
-    @Column(name = "item_name")
+    @TableField("item_name")
     private String itemName;
 
     /**
      * 规格id
      */
-    @Column(name = "item_spec_id")
+    @TableField("item_spec_id")
     private String itemSpecId;
 
     /**
      * 规格名称
      */
-    @Column(name = "item_spec_name")
+    @TableField("item_spec_name")
     private String itemSpecName;
 
     /**
@@ -59,6 +62,6 @@ public class OrderItems {
     /**
      * 购买数量
      */
-    @Column(name = "buy_counts")
+    @TableField("buy_counts")
     private Integer buyCounts;
 }

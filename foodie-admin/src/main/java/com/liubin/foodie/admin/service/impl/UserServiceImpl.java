@@ -9,7 +9,6 @@ import com.liubin.foodie.admin.pojo.bo.UserBO;
 import com.liubin.foodie.admin.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 
@@ -51,10 +50,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users queryUserForLogin(String username, String password) {
-        Example userExample = new Example(Users.class);
-        Example.Criteria userCriteria = userExample.createCriteria();
-        userCriteria.andEqualTo("username", username);
-        userCriteria.andEqualTo("password", password);
 
         //Users result = usersMapper.selectOneByExample(userExample);
         return null;

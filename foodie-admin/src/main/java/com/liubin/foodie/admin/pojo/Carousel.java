@@ -22,7 +22,7 @@ public class Carousel extends BaseEntity {
      * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private String id;
+    private Long id;
 
     /**
      * 图片 图片地址
