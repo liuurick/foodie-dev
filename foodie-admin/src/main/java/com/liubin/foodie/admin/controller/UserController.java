@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 /**
  * @author liubin
@@ -22,31 +23,31 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(Summary.USERS_PATH)
 public class UserController {
 
-    @Resource
-    private UserService userService;
-
-    @ApiOperation(value = "用户注册", notes = "用户注册", httpMethod = "POST")
-    @PostMapping("/register")
-    public CommonResult<Users> register(@RequestBody UserBO userBO,
-                                        HttpServletRequest request,
-                                        HttpServletResponse response) {
-        String username = userBO.getUsername();
-        String password = userBO.getPassword();
-        String confirmPwd = userBO.getConfirmPassword();
-        // 判断用户名和密码必须不为空
-        if (StringUtils.isBlank(username) ||
-                StringUtils.isBlank(password) ||
-                StringUtils.isBlank(confirmPwd)) {
-            return CommonResult.failed("用户名或密码不能为空");
-        }
-        // 查询用户是否存在
-        boolean isExist = userService.queryUsernameIsExist(username);
-        if (isExist) {
-            return CommonResult.failed("用户名已经存在");
-        }
-
-        return CommonResult.success(userService.createUser(userBO));
-    }
+//    @Resource
+//    private UserService userService;
+//
+//    @ApiOperation(value = "用户注册", notes = "用户注册", httpMethod = "POST")
+//    @PostMapping("/register")
+//    public CommonResult<Users> register(@RequestBody @Valid UserBO userBO,
+//                                        HttpServletRequest request,
+//                                        HttpServletResponse response) {
+//        String username = userBO.getUsername();
+//        String password = userBO.getPassword();
+//        String confirmPwd = userBO.getConfirmPassword();
+//        // 判断用户名和密码必须不为空
+//        if (StringUtils.isBlank(username) ||
+//                StringUtils.isBlank(password) ||
+//                StringUtils.isBlank(confirmPwd)) {
+//            return CommonResult.failed("用户名或密码不能为空");
+//        }
+//        // 查询用户是否存在
+//        boolean isExist = userService.queryUsernameIsExist(username);
+//        if (isExist) {
+//            return CommonResult.failed("用户名已经存在");
+//        }
+//
+//        return CommonResult.success(userService.createUser(userBO));
+//    }
 
 
 }
