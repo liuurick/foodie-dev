@@ -14,9 +14,9 @@
         <module>generate</module>
         <module>foodie-admin</module>
         <module>foodie-auth</module>
+        <module>foodie-gateway</module>
+        <module>foodie-monitor</module>
     </modules>
-
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

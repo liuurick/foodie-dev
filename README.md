@@ -3,7 +3,7 @@
 ``` lua
 foodie-dev
 ├── foodie-common -- 工具类及通用代码模块
-├── foodie-mbg -- MyBatisGenerator生成的数据库操作代码模块
+├── foodie-monitor -- 基于Spring Boot Admin的微服务监控中心
 ├── foodie-auth -- 基于Spring Security Oauth2的统一的认证中心
 ├── foodie-admin -- 后台管理系统服务
 ├── foodie-portal -- 移动端商城系统服务

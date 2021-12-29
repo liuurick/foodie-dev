@@ -9,12 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>foodie-auth</artifactId>
-    <description>基于Spring Security Oauth2的统一的认证中心</description>
+    <artifactId>foodie-gateway</artifactId>
+    <description>网关</description>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
 
 </project>
