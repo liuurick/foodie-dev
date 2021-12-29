@@ -7,7 +7,6 @@ import com.liubin.foodie.admin.pojo.bo.UserBO;
 import com.liubin.foodie.admin.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

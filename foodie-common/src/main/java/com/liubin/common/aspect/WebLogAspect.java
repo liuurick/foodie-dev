@@ -1,6 +1,6 @@
 package com.liubin.common.aspect;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.liubin.common.annotation.WebLog;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -65,7 +65,7 @@ public class WebLogAspect {
         // 打印请求的 IP
         log.info("IP             : {}", request.getRemoteAddr());
         // 打印请求入参
-        log.info("Request Args   : {}", new Gson().toJson(joinPoint.getArgs()));
+        log.info("Request Args   : {}", JSON.toJSONString(joinPoint.getArgs()));
     }
 
     /**
