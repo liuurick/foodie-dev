@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>foodie-monitor</artifactId>
-    <description>监控</description>
+    <description>监控中心</description>
 
     <dependencies>
         <dependency>

@@ -16,13 +16,13 @@ import java.util.List;
 @Service("carouselServiceImpl")
 public class CarouselServiceImpl implements CarouselService {
 
-//    @Resource
-//    private CarouselMapper carouselMapper;
+    @Resource
+    private CarouselMapper carouselMapper;
 
-//    @Override
-//    public List<Carousel> queryAll(Integer isShow) {
-//        return carouselMapper.selectList(new LambdaQueryWrapper<Carousel>()
-//                .eq(Carousel::getIsShow, isShow)
-//                .eq(Carousel::getIsDelete, DeleteEnum.NORMAL.getCode()));
-//    }
+    @Override
+    public List<Carousel> queryAll(Integer isShow) {
+        return carouselMapper.selectList(new LambdaQueryWrapper<Carousel>()
+                .eq(Carousel::getIsShow, isShow)
+                .eq(Carousel::getIsDelete, DeleteEnum.NORMAL.getCode()));
+    }
 }

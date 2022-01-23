@@ -17,21 +17,21 @@ import java.util.List;
 @Service("categoryServiceImpl")
 public class CategoryServiceImpl implements CategoryService {
 
-//    @Resource
-//    private CategoryMapper categoryMapper;
+    @Resource
+    private CategoryMapper categoryMapper;
 
-//    @Override
-//    public List<Category> queryAllRootLevelCat() {
-//        return categoryMapper.selectList(new LambdaQueryWrapper<Category>()
-//                .eq(Category::getType, 1)
-//                .eq(Category::getIsDelete, DeleteEnum.NORMAL.getCode()));
-//    }
-//
-//    @Override
-//    public List<CategoryVO> getSubCatList(Integer rootCatId) {
-//        // return categoryMapper.getSubCatList(rootCatId);
-//        return null;
-//    }
+    @Override
+    public List<Category> queryAllRootLevelCat() {
+        return categoryMapper.selectList(new LambdaQueryWrapper<Category>()
+                .eq(Category::getType, 1)
+                .eq(Category::getIsDelete, DeleteEnum.NORMAL.getCode()));
+    }
+
+    @Override
+    public List<CategoryVO> getSubCatList(Integer rootCatId) {
+        // return categoryMapper.getSubCatList(rootCatId);
+        return null;
+    }
 
 
 }

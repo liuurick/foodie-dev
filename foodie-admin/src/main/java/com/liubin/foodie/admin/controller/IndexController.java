@@ -29,24 +29,24 @@ import java.util.List;
 @RequestMapping(value = Summary.INDEX_PATH)
 public class IndexController {
 
-//    @Resource
-//    private CarouselService carouselService;
-//
-//    @Resource
-//    private CategoryService categoryService;
-//
-//    @ApiOperation(value = "轮播图", notes = "轮播图", httpMethod = "GET")
-//    @GetMapping("/carousels")
-//    @WebLog(description = "轮播图")
-//    public CommonResult<List<Carousel>> carousel() {
-//        return CommonResult.success(carouselService.queryAll(YesOrNoEnum.YES.type));
-//    }
-//
-//    /**
-//     * 首页分类展示需求：
-//     * 1. 第一次刷新主页查询大分类，渲染展示到首页
-//     * 2. 如果鼠标上移到大分类，则加载其子分类的内容，如果已经存在子分类，则不需要加载（懒加载）
-//     */
+    @Resource
+    private CarouselService carouselService;
+
+    @Resource
+    private CategoryService categoryService;
+
+    @ApiOperation(value = "轮播图", notes = "轮播图", httpMethod = "GET")
+    @GetMapping("/carousels")
+    @WebLog(description = "轮播图")
+    public CommonResult<List<Carousel>> carousel() {
+        return CommonResult.success(carouselService.queryAll(YesOrNoEnum.YES.type));
+    }
+
+    /**
+     * 首页分类展示需求：
+     * 1. 第一次刷新主页查询大分类，渲染展示到首页
+     * 2. 如果鼠标上移到大分类，则加载其子分类的内容，如果已经存在子分类，则不需要加载（懒加载）
+     */
 //    @ApiOperation(value = "获取商品分类(一级分类)", notes = "获取商品分类(一级分类)", httpMethod = "GET")
 //    @GetMapping("/categorys")
 //    @WebLog(description = "获取商品分类(一级分类)")
