@@ -2,6 +2,7 @@ package com.liubin.common.aspect;
 
 import com.alibaba.fastjson.JSON;
 import com.liubin.common.annotation.WebLog;
+import com.liubin.common.constant.TakeTimeConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -94,9 +95,9 @@ public class WebLogAspect {
         sw.stop();
         // 执行耗时
         long takeTime = sw.getTotalTimeMillis();
-        if (takeTime > 3000) {
+        if (takeTime > TakeTimeConstant.infoTime) {
             log.error("====== 执行结束，耗时：{} 毫秒 ======", takeTime);
-        } else if (takeTime > 2000) {
+        } else if (takeTime > TakeTimeConstant.warnTime) {
             log.warn("====== 执行结束，耗时：{} 毫秒 ======", takeTime);
         } else {
             log.info("====== 执行结束，耗时：{} 毫秒 ======", takeTime);
