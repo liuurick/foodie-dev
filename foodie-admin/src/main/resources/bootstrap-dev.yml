@@ -3,3 +3,6 @@ spring:
     nacos:
       discovery:
         server-addr: http://81.68.71.90:8848
+      config:
+        server-addr: http://81.68.71.90:8848
+        file-extension: yaml

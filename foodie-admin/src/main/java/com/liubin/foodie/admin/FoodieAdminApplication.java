@@ -1,5 +1,6 @@
 package com.liubin.foodie.admin;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -17,14 +18,16 @@ import java.net.UnknownHostException;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableEncryptableProperties
 public class FoodieAdminApplication {
     private static final Logger LOGGER = LoggerFactory.getLogger(FoodieAdminApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
+
         Environment env = new SpringApplication(FoodieAdminApplication.class).run(args).getEnvironment();
         String envPort = env.getProperty("server.port");
         String envContext = env.getProperty("server.servlet.context-path");
-        String port = envPort == null ? "8080" : envPort;
+        String port = envPort == null ? "8810" : envPort;
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/doc.html";
         String druidPath = port + "" + context + "/druid";

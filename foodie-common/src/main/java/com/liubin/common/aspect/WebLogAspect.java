@@ -35,7 +35,7 @@ public class WebLogAspect {
      * 以自定义 @WebLog 注解为切点
      */
     @Pointcut("@annotation(com.liubin.common.annotation.WebLog)")
-    public void logPoint() {
+    public void logPoint()throws UnsupportedOperationException {
     }
 
     /**
