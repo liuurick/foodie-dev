@@ -1,0 +1,19 @@
+server:
+  host: 192.168.2.230
+  nacos: 81.68.71.90
+
+spring:
+  application:
+    name: foodie-admin
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://81.68.71.90:3306/foodie?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: rootroot
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${server.nacos}:8848
+        enabled: true
+      config:
+        server-addr: ${server.nacos}:8848

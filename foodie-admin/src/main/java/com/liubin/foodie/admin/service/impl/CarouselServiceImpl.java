@@ -16,8 +16,8 @@ import java.util.List;
 @Service("carouselServiceImpl")
 public class CarouselServiceImpl implements CarouselService {
 
-    @Resource
-    private CarouselMapper carouselMapper;
+//    @Resource
+//    private CarouselMapper carouselMapper;
 
 //    @Override
 //    public List<Carousel> queryAll(Integer isShow) {

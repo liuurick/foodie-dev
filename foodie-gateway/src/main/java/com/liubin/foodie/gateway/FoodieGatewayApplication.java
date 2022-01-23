@@ -1,6 +1,5 @@
-package com.liubin.foodie.monitor;
+package com.liubin.foodie.gateway;
 
-import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -15,13 +14,12 @@ import java.net.UnknownHostException;
  * @author liubin
  */
 @EnableDiscoveryClient
-@EnableAdminServer
 @SpringBootApplication
-public class MonitorApplication {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MonitorApplication.class);
+public class FoodieGatewayApplication {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FoodieGatewayApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
-        Environment env = new SpringApplication(MonitorApplication.class).run(args).getEnvironment();
+        Environment env = new SpringApplication(FoodieGatewayApplication.class).run(args).getEnvironment();
         String envPort = env.getProperty("server.port");
         String envContext = env.getProperty("server.servlet.context-path");
         String port = envPort == null ? "8080" : envPort;

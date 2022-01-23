@@ -1,8 +1,11 @@
 package com.liubin.foodie.admin;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -11,9 +14,11 @@ import java.net.UnknownHostException;
 /**
  * @author liubin
  */
+@EnableFeignClients
+@EnableDiscoveryClient
 @SpringBootApplication
-@ComponentScan("com.liubin.*")
 public class FoodieAdminApplication {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FoodieAdminApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
         Environment env = new SpringApplication(FoodieAdminApplication.class).run(args).getEnvironment();
@@ -23,8 +28,9 @@ public class FoodieAdminApplication {
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/doc.html";
         String druidPath = port + "" + context + "/druid";
-//        log.info("Access URLs:\n----------------------------------------------------------\n\t"
-//                        + "Local: \t\thttp://127.0.0.1:{}\n\t" + "External: \thttp://{}:{}\n\t"
-//                        + "----------------------------------------------------------", path,
-//                InetAddress.getLocalHost().getHostAddress(), path, druidPath);
-    }}
+        LOGGER.info("Access URLs:\n----------------------------------------------------------\n\t"
+                        + "Local: \t\thttp://127.0.0.1:{}\n\t" + "External: \thttp://{}:{}\n\t"
+                        + "----------------------------------------------------------", path,
+                InetAddress.getLocalHost().getHostAddress(), path, druidPath);
+    }
+}

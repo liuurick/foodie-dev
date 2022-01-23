@@ -17,8 +17,8 @@ import java.util.List;
 @Service("categoryServiceImpl")
 public class CategoryServiceImpl implements CategoryService {
 
-    @Resource
-    private CategoryMapper categoryMapper;
+//    @Resource
+//    private CategoryMapper categoryMapper;
 
 //    @Override
 //    public List<Category> queryAllRootLevelCat() {
