@@ -1,5 +1,5 @@
 server:
-  port: 8830
+  port: 8850
 spring:
   cloud:
     gateway:

@@ -1,4 +1,4 @@
-package com.liubin.foodie.gateway;
+package com.liubin.foodie.pass;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,14 +15,14 @@ import java.net.UnknownHostException;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class FoodieGatewayApplication {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FoodieGatewayApplication.class);
+public class FoodiePassApplication {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FoodiePassApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
-        Environment env = new SpringApplication(FoodieGatewayApplication.class).run(args).getEnvironment();
+        Environment env = new SpringApplication(FoodiePassApplication.class).run(args).getEnvironment();
         String envPort = env.getProperty("server.port");
         String envContext = env.getProperty("server.servlet.context-path");
-        String port = envPort == null ? "8830" : envPort;
+        String port = envPort == null ? "8850" : envPort;
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/login.html";
         String druidPath = port + "" + context + "/druid";

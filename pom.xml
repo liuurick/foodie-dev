@@ -16,6 +16,8 @@
         <module>foodie-auth</module>
         <module>foodie-gateway</module>
         <module>foodie-monitor</module>
+        <module>foodie-pass</module>
+        <module>foodie-user</module>
     </modules>
 
     <parent>
