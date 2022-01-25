@@ -1,8 +1,15 @@
 spring:
+  profiles:
+    # 定义 nacos 读取配置文件的规则：application-${profile}.yml
+    # profiles 为最优先读取 所以不能使用 ${spring.application.name}
+    active: database, scheduler, device-worker
   cloud:
     nacos:
       discovery:
         server-addr: http://81.68.71.90:8848
       config:
         server-addr: http://81.68.71.90:8848
+        prefix: application
         file-extension: yaml
+  session:
+    timeout: 15000
