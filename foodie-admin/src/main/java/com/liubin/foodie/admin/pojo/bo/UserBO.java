@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
+ * 用户注册
  * @author liubin
  */
 @ApiModel(value = "用户对象BO", description = "从客户端，由用户传入的数据封装在此entity中")

@@ -29,8 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryVO> getSubCatList(Integer rootCatId) {
-        // return categoryMapper.getSubCatList(rootCatId);
-        return null;
+        return categoryMapper.getSubCatList(rootCatId);
     }
 
 

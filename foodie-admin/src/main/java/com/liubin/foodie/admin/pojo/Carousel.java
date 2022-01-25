@@ -33,7 +33,7 @@ public class Carousel extends BaseEntity {
     /**
      * 背景色
      */
-    @TableField(value = "background_color")
+    @TableField(value = "bg_color")
     private String backgroundColor;
 
     /**
