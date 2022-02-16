@@ -1,11 +1,14 @@
 package com.liubin.foodie.admin.controller;
 
 
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
+import com.google.common.collect.Lists;
 import com.liubin.common.annotation.WebLog;
 import com.liubin.common.api.CommonResult;
 import com.liubin.common.config.Summary;
 import com.liubin.common.enums.YesOrNoEnum;
+import com.liubin.common.utils.redis.RedisService;
 import com.liubin.foodie.admin.pojo.Carousel;
 import com.liubin.foodie.admin.pojo.Category;
 import com.liubin.foodie.admin.pojo.vo.CategoryVO;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,11 +40,21 @@ public class IndexController {
     @Resource
     private CategoryService categoryService;
 
+    @Resource
+    private RedisService redisService;
+
     @ApiOperation(value = "轮播图", notes = "轮播图", httpMethod = "GET")
     @GetMapping("/carousels")
     @WebLog(description = "轮播图")
     public CommonResult<List<Carousel>> carousel() {
-        return CommonResult.success(carouselService.queryAll(YesOrNoEnum.YES.type));
+        List<Carousel> carouselList = redisService.getCacheList("carousel");
+        if (CollectionUtils.isEmpty(carouselList)) {
+            carouselList = carouselService.queryAll(YesOrNoEnum.YES.type);
+            if (CollectionUtils.isNotEmpty(carouselList)) {
+                redisService.setCacheList("carousel", carouselList);
+            }
+        }
+        return CommonResult.success(carouselList);
     }
 
     /**
