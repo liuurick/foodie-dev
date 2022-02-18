@@ -30,7 +30,6 @@ public class CommonResult<T> implements Serializable {
     private T data;
 
 
-
     protected CommonResult() {
     }
 
@@ -38,6 +37,18 @@ public class CommonResult<T> implements Serializable {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+
+    public CommonResult(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+    /**
+     * 成功返回结果
+     */
+    public static <T> CommonResult<T> success() {
+        return new CommonResult<T>(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage());
     }
 
     /**

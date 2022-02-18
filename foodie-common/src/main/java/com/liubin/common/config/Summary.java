@@ -15,4 +15,9 @@ public class Summary {
      * 用户
      */
     public static final String USERS_PATH = "/api/users";
+
+    /**
+     * 购物车
+     */
+    public static final String SHOP_CART_PATH = "/api/shop/cart";
 }
