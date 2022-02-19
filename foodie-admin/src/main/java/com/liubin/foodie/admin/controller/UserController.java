@@ -89,13 +89,13 @@ public class UserController {
         String username = userBO.getUsername();
         String password = userBO.getPassword();
 
-        // 0. 判断用户名和密码必须不为空
+        // 判断用户名和密码必须不为空
         if (StringUtils.isBlank(username) ||
                 StringUtils.isBlank(password)) {
             return CommonResult.failed("用户名或密码不能为空");
         }
 
-        // 1. 实现登录
+        // 实现登录
         Users userResult = userService.queryUserForLogin(username,
                 MD5Utils.getMD5Str(password));
 
@@ -103,7 +103,7 @@ public class UserController {
             return CommonResult.failed("用户名或密码不正确");
         }
 
-        userResult = setNullProperty(userResult);
+        setNullProperty(userResult);
 
         CookieUtils.setCookie(request, response, "user",
                 JsonUtils.objectToJson(userResult), true);
