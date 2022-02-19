@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("items_param")
-public class ItemsParam extends BaseEntity{
+@TableName("goods_param")
+public class GoodsParam extends BaseEntity{
     
     /**
      * 商品参数id
@@ -21,8 +21,8 @@ public class ItemsParam extends BaseEntity{
     /**
      * 商品外键id
      */
-    @TableField("item_id")
-    private String itemId;
+    @TableField("goods_id")
+    private String goodsId;
 
     /**
      * 产地 产地，例：中国江苏

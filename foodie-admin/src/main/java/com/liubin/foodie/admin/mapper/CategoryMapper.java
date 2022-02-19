@@ -15,5 +15,12 @@ import java.util.List;
  */
 @Mapper
 public interface CategoryMapper extends BaseMapper<Category> {
+
+    /**
+     * 自连接查询商品子分类
+     *
+     * @param rootCatId
+     * @return
+     */
     List<CategoryVO> getSubCatList(@Param("rootCatId") Integer rootCatId);
 }

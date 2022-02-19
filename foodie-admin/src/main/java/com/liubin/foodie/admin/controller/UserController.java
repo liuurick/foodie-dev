@@ -6,11 +6,13 @@ import com.liubin.common.utils.CookieUtils;
 import com.liubin.common.utils.JsonUtils;
 import com.liubin.common.utils.MD5Utils;
 import com.liubin.foodie.admin.pojo.Users;
+import com.liubin.foodie.admin.pojo.bo.LoginBO;
 import com.liubin.foodie.admin.pojo.bo.UserBO;
 import com.liubin.foodie.admin.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -57,7 +59,7 @@ public class UserController {
         String password = userBO.getPassword();
         String confirmPwd = userBO.getConfirmPassword();
         // 判断密码和确认密码是否相同
-        if (!password.equals(confirmPwd)){
+        if (!password.equals(confirmPwd)) {
             return CommonResult.failed("密码和确认密码不相同");
         }
 
@@ -82,12 +84,12 @@ public class UserController {
 
     @ApiOperation(value = "用户登录", notes = "用户登录", httpMethod = "POST")
     @PostMapping("/login")
-    public CommonResult login(@RequestBody UserBO userBO,
-                                 HttpServletRequest request,
-                                 HttpServletResponse response) throws Exception {
+    public CommonResult login(@RequestBody @Valid LoginBO loginBO,
+                              HttpServletRequest request,
+                              HttpServletResponse response) throws Exception {
 
-        String username = userBO.getUsername();
-        String password = userBO.getPassword();
+        String username = loginBO.getUsername();
+        String password = loginBO.getPassword();
 
         // 判断用户名和密码必须不为空
         if (StringUtils.isBlank(username) ||
@@ -97,7 +99,7 @@ public class UserController {
 
         // 实现登录
         Users userResult = userService.queryUserForLogin(username,
-                MD5Utils.getMD5Str(password));
+                DigestUtils.md5DigestAsHex(password.getBytes()));
 
         if (userResult == null) {
             return CommonResult.failed("用户名或密码不正确");
@@ -108,29 +110,27 @@ public class UserController {
         CookieUtils.setCookie(request, response, "user",
                 JsonUtils.objectToJson(userResult), true);
 
-
-        // TODO 生成用户token，存入redis会话
-        // TODO 同步购物车数据
-
         return CommonResult.success(userResult);
     }
 
     @ApiOperation(value = "用户退出登录", notes = "用户退出登录", httpMethod = "POST")
     @PostMapping("/logout")
     public CommonResult logout(@RequestParam String userId,
-                                  HttpServletRequest request,
-                                  HttpServletResponse response) {
+                               HttpServletRequest request,
+                               HttpServletResponse response) {
 
         // 清除用户的相关信息的cookie
         CookieUtils.deleteCookie(request, response, "user");
 
-        // TODO 用户退出登录，需要清空购物车
-        // TODO 分布式会话中需要清除用户数据
-
         return CommonResult.success();
     }
 
-
+    /**
+     * 清空用户信息
+     *
+     * @param userResult
+     * @return
+     */
     private Users setNullProperty(Users userResult) {
         userResult.setPassword(null);
         userResult.setMobile(null);
@@ -140,7 +140,6 @@ public class UserController {
         userResult.setBirthday(null);
         return userResult;
     }
-
 
 
 }

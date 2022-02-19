@@ -6,7 +6,7 @@ CREATE TABLE `carousel` (
   `id`         bigint(64)      NOT NULL COMMENT '主键',
   `image_url`  varchar(128)    NOT NULL COMMENT '图片 图片地址',
   `bg_color`   varchar(32)     DEFAULT NULL COMMENT '背景色',
-  `item_id`    varchar(64)     DEFAULT NULL COMMENT '商品id 商品id',
+  `goods_id`    varchar(64)     DEFAULT NULL COMMENT '商品id 商品id',
   `cat_id`     varchar(64)     DEFAULT NULL COMMENT '商品分类id 商品分类id',
   `type`       tinyint(1)      NOT NULL COMMENT '轮播图类型 轮播图类型，用于判断，可以根据商品id或者分类进行页面跳转，1：商品 2：分类',
   `sort`       tinyint(1)      NOT NULL COMMENT '轮播图展示顺序',
@@ -37,10 +37,10 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='商品分类 ';
 
-DROP TABLE IF EXISTS `items`;
-CREATE TABLE `items` (
+DROP TABLE IF EXISTS `goods`;
+CREATE TABLE `goods` (
   `id` bigint(64) NOT NULL COMMENT '商品主键id',
-  `item_name` varchar(32) NOT NULL COMMENT '商品名称 商品名称',
+  `goods_name` varchar(32) NOT NULL COMMENT '商品名称 商品名称',
   `cat_id` int(11) NOT NULL COMMENT '分类外键id 分类id',
   `root_cat_id` int(11) NOT NULL COMMENT '一级分类外键id',
   `sell_counts` int(11) NOT NULL COMMENT '累计销售 累计销售',
@@ -55,13 +55,13 @@ CREATE TABLE `items` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 CHARSET=utf8mb4 COMMENT='商品表 商品信息相关表：分类表，商品图片表，商品规格表，商品参数表';
 
 
-DROP TABLE IF EXISTS `items_comments`;
-CREATE TABLE `items_comments` (
+DROP TABLE IF EXISTS `goods_comments`;
+CREATE TABLE `goods_comments` (
   `id` bigint(64) NOT NULL COMMENT 'id主键',
   `user_id` varchar(64) DEFAULT NULL COMMENT '用户id 用户名须脱敏',
-  `item_id` varchar(64) NOT NULL COMMENT '商品id',
-  `item_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
-  `item_spec_id` varchar(64) DEFAULT NULL COMMENT '商品规格id 可为空',
+  `goods_id` varchar(64) NOT NULL COMMENT '商品id',
+  `goods_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
+  `goods_spec_id` varchar(64) DEFAULT NULL COMMENT '商品规格id 可为空',
   `sepc_name` varchar(32) DEFAULT NULL COMMENT '规格名称 可为空',
   `comment_level` int(11) NOT NULL COMMENT '评价等级 1：好评 2：中评 3：差评',
   `content` varchar(128) NOT NULL COMMENT '评价内容',
@@ -74,10 +74,10 @@ CREATE TABLE `items_comments` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 CHARSET=utf8mb4 COMMENT='商品评价表 ';
 
 
-DROP TABLE IF EXISTS `items_img`;
-CREATE TABLE `items_img` (
+DROP TABLE IF EXISTS `goods_img`;
+CREATE TABLE `goods_img` (
   `id` bigint(64) NOT NULL COMMENT '图片主键',
-  `item_id` varchar(64) NOT NULL COMMENT '商品外键id 商品外键id',
+  `goods_id` varchar(64) NOT NULL COMMENT '商品外键id 商品外键id',
   `url` varchar(128) NOT NULL COMMENT '图片地址 图片地址',
   `sort` int(11) NOT NULL COMMENT '顺序 图片顺序，从小到大',
   `is_main` int(11) NOT NULL COMMENT '是否主图 是否主图，1：是，0：否',
@@ -91,10 +91,10 @@ CREATE TABLE `items_img` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 CHARSET=utf8mb4 COMMENT='商品图片 ';
 
 
-DROP TABLE IF EXISTS `items_param`;
-CREATE TABLE `items_param` (
+DROP TABLE IF EXISTS `goods_param`;
+CREATE TABLE `goods_param` (
   `id` bigint(64) NOT NULL COMMENT '商品参数id',
-  `item_id` varchar(32) NOT NULL COMMENT '商品外键id',
+  `goods_id` varchar(32) NOT NULL COMMENT '商品外键id',
   `product_place` varchar(32) NOT NULL COMMENT '产地 产地，例：中国江苏',
   `foot_period` varchar(32) NOT NULL COMMENT '保质期 保质期，例：180天',
   `brand` varchar(32) NOT NULL COMMENT '品牌名 品牌名，例：三只大灰狼',
@@ -114,10 +114,10 @@ CREATE TABLE `items_param` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 CHARSET=utf8mb4 COMMENT='商品参数 ';
 
 
-DROP TABLE IF EXISTS `items_spec`;
-CREATE TABLE `items_spec` (
+DROP TABLE IF EXISTS `goods_spec`;
+CREATE TABLE `goods_spec` (
   `id` bigint(64) NOT NULL COMMENT '商品规格id',
-  `item_id` varchar(64) NOT NULL COMMENT '商品外键id',
+  `goods_id` varchar(64) NOT NULL COMMENT '商品外键id',
   `name` varchar(32) NOT NULL COMMENT '规格名称',
   `stock` int(11) NOT NULL COMMENT '库存',
   `discounts` decimal(4,2) NOT NULL COMMENT '折扣力度',
@@ -133,15 +133,15 @@ CREATE TABLE `items_spec` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 CHARSET=utf8mb4 COMMENT='商品规格 每一件商品都有不同的规格，不同的规格又有不同的价格和优惠力度，规格表为此设计';
 
 
-DROP TABLE IF EXISTS `order_items`;
-CREATE TABLE `order_items` (
+DROP TABLE IF EXISTS `order_goods`;
+CREATE TABLE `order_goods` (
   `id` bigint(64) NOT NULL COMMENT '主键id',
   `order_id` varchar(64) NOT NULL COMMENT '归属订单id',
-  `item_id` varchar(64) NOT NULL COMMENT '商品id',
-  `item_img` varchar(128) NOT NULL COMMENT '商品图片',
-  `item_name` varchar(32) NOT NULL COMMENT '商品名称',
-  `item_spec_id` varchar(32) NOT NULL COMMENT '规格id',
-  `item_spec_name` varchar(32) NOT NULL COMMENT '规格名称',
+  `goods_id` varchar(64) NOT NULL COMMENT '商品id',
+  `goods_img` varchar(128) NOT NULL COMMENT '商品图片',
+  `goods_name` varchar(32) NOT NULL COMMENT '商品名称',
+  `goods_spec_id` varchar(32) NOT NULL COMMENT '规格id',
+  `goods_spec_name` varchar(32) NOT NULL COMMENT '规格名称',
   `price` int(11) NOT NULL COMMENT '成交价格',
   `buy_counts` int(11) NOT NULL COMMENT '购买数量',
     `is_delete`  tinyint(1)      NOT NULL DEFAULT 0 COMMENT '是否删除:0:正常,1删除',

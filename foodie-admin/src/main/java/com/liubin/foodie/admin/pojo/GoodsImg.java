@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("items_img")
-public class ItemsImg extends BaseEntity{
+@TableName("goods_img")
+public class GoodsImg extends BaseEntity{
     /**
      * 图片主键
      */
@@ -20,8 +20,8 @@ public class ItemsImg extends BaseEntity{
     /**
      * 商品外键id 商品外键id
      */
-    @TableField("item_id")
-    private String itemId;
+    @TableField("goods_id")
+    private String goodsId;
 
     /**
      * 图片地址 图片地址

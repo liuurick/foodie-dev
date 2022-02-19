@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("items_spec")
-public class ItemsSpec extends BaseEntity{
+@TableName("goods_spec")
+public class GoodsSpec extends BaseEntity{
     
     /**
      * 商品规格id
@@ -23,8 +23,8 @@ public class ItemsSpec extends BaseEntity{
     /**
      * 商品外键id
      */
-    @TableField("item_id")
-    private String itemId;
+    @TableField("goods_id")
+    private String goodsId;
 
     /**
      * 规格名称

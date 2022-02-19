@@ -1,6 +1,8 @@
 package com.liubin.foodie.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.liubin.common.enums.DeleteEnum;
 import com.liubin.common.exception.CustomException;
 import com.liubin.foodie.admin.mapper.UsersMapper;
@@ -50,7 +52,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users queryUserForLogin(String username, String password) {
-        //return usersMapper.selectOneByExample(userExample);
-        return null;
+
+        Users result = usersMapper.selectOne(new LambdaQueryWrapper<Users>()
+                .eq(Users::getUsername, username)
+                .eq(Users::getPassword, password));
+
+        return result;
     }
 }

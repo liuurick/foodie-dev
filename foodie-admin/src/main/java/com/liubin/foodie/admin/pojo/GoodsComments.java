@@ -11,8 +11,8 @@ import java.util.Date;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("items_comments")
-public class ItemsComments extends BaseEntity{
+@TableName("goods_comments")
+public class GoodsComments extends BaseEntity{
 
     /**
      * id主键
@@ -29,20 +29,20 @@ public class ItemsComments extends BaseEntity{
     /**
      * 商品id
      */
-    @TableField("item_id")
-    private String itemId;
+    @TableField("goods_id")
+    private String goodsId;
 
     /**
      * 商品名称
      */
-    @TableField("item_name")
-    private String itemName;
+    @TableField("goods_name")
+    private String goodsName;
 
     /**
      * 商品规格id 可为空
      */
-    @TableField("item_spec_id")
-    private String itemSpecId;
+    @TableField("goods_spec_id")
+    private String goodsSpecId;
 
     /**
      * 规格名称 可为空
