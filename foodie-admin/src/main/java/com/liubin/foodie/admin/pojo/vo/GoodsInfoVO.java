@@ -14,8 +14,23 @@ import java.util.List;
 @Data
 public class GoodsInfoVO {
 
+    /**
+     * 商品
+     */
     private Goods goods;
+
+    /**
+     * 商品图片
+     */
     private List<GoodsImg> goodsImgList;
+
+    /**
+     * 商品规格
+     */
     private List<GoodsSpec> goodsSpecList;
+
+    /**
+     * 商品规格
+     */
     private GoodsParam goodsParams;
 }

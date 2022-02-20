@@ -20,4 +20,10 @@ public class Summary {
      * 购物车
      */
     public static final String SHOP_CART_PATH = "/api/shop/cart";
+
+
+    /**
+     * 商品
+     */
+    public static final String GOODS_PATH = "/api/goods";
 }
