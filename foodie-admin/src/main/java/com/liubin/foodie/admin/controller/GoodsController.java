@@ -72,31 +72,14 @@ public class GoodsController {
     @ApiOperation(value = "查询商品评论", notes = "查询商品评论", httpMethod = "GET")
     @GetMapping("/comments")
     public CommonResult comments(
-            @ApiParam(name = "itemId", value = "商品id", required = true)
-            @RequestParam String itemId,
+            @ApiParam(name = "goodsId", value = "商品id", required = true)
+            @RequestParam String goodsId,
             @ApiParam(name = "level", value = "评价等级", required = false)
-            @RequestParam Integer level,
-            @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
-            @RequestParam Integer page,
-            @ApiParam(name = "pageSize", value = "分页的每一页显示的条数", required = false)
-            @RequestParam Integer pageSize) {
+            @RequestParam Integer level) {
 
-        if (StringUtils.isBlank(itemId)) {
+        if (StringUtils.isBlank(goodsId)) {
             return CommonResult.failed("商品id不能为空");
         }
-
-        if (page == null) {
-            page = 1;
-        }
-
-        if (pageSize == null) {
-            pageSize = COMMON_PAGE_SIZE;
-        }
-
-        PagedGridResult grid = itemService.queryPagedComments(itemId,
-                level,
-                page,
-                pageSize);
 
         return CommonResult.success(grid);
     }
@@ -107,11 +90,7 @@ public class GoodsController {
             @ApiParam(name = "keywords", value = "关键字", required = true)
             @RequestParam String keywords,
             @ApiParam(name = "sort", value = "排序", required = false)
-            @RequestParam String sort,
-            @ApiParam(name = "page", value = "查询下一页的第几页", required = false)
-            @RequestParam Integer page,
-            @ApiParam(name = "pageSize", value = "分页的每一页显示的条数", required = false)
-            @RequestParam Integer pageSize) {
+            @RequestParam String sort) {
 
         if (StringUtils.isBlank(keywords)) {
             return CommonResult.failed("查询关键字不能为空");
