@@ -11,6 +11,7 @@ import com.liubin.foodie.admin.pojo.GoodsImg;
 import com.liubin.foodie.admin.pojo.GoodsParam;
 import com.liubin.foodie.admin.pojo.GoodsSpec;
 import com.liubin.foodie.admin.pojo.bo.GoodsInfoBO;
+import com.liubin.foodie.admin.pojo.vo.CommentLevelCountsVO;
 import com.liubin.foodie.admin.service.GoodsService;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +59,11 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public GoodsParam queryGoodsParam(String goodsId) {
+        return null;
+    }
+
+    @Override
+    public CommentLevelCountsVO queryCommentCounts(String goodsId) {
         return null;
     }
 }

@@ -19,7 +19,7 @@ public class Summary {
     /**
      * 购物车
      */
-    public static final String SHOP_CART_PATH = "/api/shop/cart";
+    public static final String SHOP_CART_PATH = "/api/shop/carts";
 
 
     /**

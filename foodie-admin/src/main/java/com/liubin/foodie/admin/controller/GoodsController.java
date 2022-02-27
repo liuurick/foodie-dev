@@ -96,20 +96,7 @@ public class GoodsController {
             return CommonResult.failed("查询关键字不能为空");
         }
 
-        if (page == null) {
-            page = 1;
-        }
-
-        if (pageSize == null) {
-            pageSize = PAGE_SIZE;
-        }
-
-        PagedGridResult grid = goodsService.searhGoods(keywords,
-                sort,
-                page,
-                pageSize);
-
-        return CommonResult.success(grid);
+        return CommonResult.success();
     }
 
     @ApiOperation(value = "通过分类id搜索商品列表", notes = "通过分类id搜索商品列表", httpMethod = "GET")
