@@ -18,6 +18,7 @@
         <module>foodie-monitor</module>
         <module>foodie-pass</module>
         <module>foodie-user</module>
+        <module>foodie-pay</module>
     </modules>
 
     <parent>
