@@ -7,7 +7,7 @@ package com.liubin.common.config;
 public class Summary {
 
     /**
-     *  主页展示
+     * 主页展示
      */
     public static final String INDEX_PATH = "/api/index";
 
@@ -26,4 +26,11 @@ public class Summary {
      * 商品
      */
     public static final String GOODS_PATH = "/api/goods";
+
+    /*************************************用户中心***********************************/
+
+    /**
+     * 忘记密码
+     */
+    public static final String FORGET_RESET_PASSWORD = "/api/forget/reset/password";
 }
