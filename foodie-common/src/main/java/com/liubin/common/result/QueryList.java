@@ -1,5 +1,6 @@
 package com.liubin.common.result;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.Data;
 
 import java.io.Serializable;

@@ -1,13 +1,14 @@
 package com.liubin.common.api;
 
+import com.github.pagehelper.PageInfo;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * 分页数据封装类
+ *
  * @author liubin
  */
 @Data
