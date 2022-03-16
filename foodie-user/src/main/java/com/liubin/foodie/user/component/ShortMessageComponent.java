@@ -1,27 +1,17 @@
 package com.liubin.foodie.user.component;
 
-import static com.dino.registermodule.base.LoginUserConstant.LoginShortMessageStatus.SEND;
-import static com.dino.registermodule.base.LoginUserConstant.RedisShortMessagePrefix.*;
-import static com.dino.registermodule.base.LoginUserConstant.RedisShortMessagePrefix.BIND_LOGIN_USER_TYPE_PREFIX;
-import static com.dino.registermodule.base.LoginUserConstant.RedisShortMessagePrefix.CANCEL_BIND_LOGIN_USER_TYPE_PREFIX;
-import static com.dino.registermodule.base.LoginUserConstant.RedisShortMessagePrefix.FORGET_PASSWORD_TYPE_PREFIX;
-import static com.dino.registermodule.base.LoginUserConstant.RedisShortMessagePrefix.LOGIN_TYPE_PREFIX;
-import static com.dino.registermodule.base.LoginUserConstant.RedisShortMessagePrefix.REGISTER_TYPE_PREFIX;
 
-import com.dino.registermodule.base.HttpStatus;
-import com.dino.registermodule.base.LoginUserConstant;
-import com.dino.registermodule.config.RedisComponent;
-import com.dino.registermodule.dao.LoginShortMessageDao;
-import com.dino.registermodule.domain.entity.LoginShortMessage;
-import com.dino.registermodule.exception.BusinessException;
-import com.dino.registermodule.handler.MessageSendHandler;
-import com.dino.registermodule.service.LoginShortMessageService;
-import com.dino.registermodule.service.VerificationCodeService;
-import com.dino.registermodule.utils.DateTimeUtils;
-import com.dino.registermodule.utils.RegexUtils;
+import com.liubin.common.utils.RegexUtils;
+import com.liubin.common.utils.redis.RedisService;
+import com.liubin.foodie.user.handler.MessageSendHandler;
+import com.liubin.foodie.user.mapper.LoginShortMessageDao;
+import com.liubin.foodie.user.pojo.LoginShortMessage;
+import com.liubin.foodie.user.service.LoginShortMessageService;
+import com.liubin.foodie.user.service.VerificationCodeService;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -46,7 +36,7 @@ public final class ShortMessageComponent {
     @Autowired
     private VerificationCodeService verificationCodeService;
     @Autowired
-    private RedisComponent redisComponent;
+    private RedisService redisService;
     @Autowired
     private LoginShortMessageService loginShortMessageService;
     @Autowired
