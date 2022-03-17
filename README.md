@@ -7,6 +7,7 @@ foodie-dev
 ├── foodie-auth -- 基于Spring Security Oauth2的统一的认证中心
 ├── foodie-user -- 用户中心
 ├── foodie-pass -- SSO单点登录
+├── foodie-gateway -- 网关服务
 ├── foodie-admin -- 后台管理系统服务
 ├── foodie-pay -- 支付平台
 ├── foodie-portal -- 移动端商城系统服务

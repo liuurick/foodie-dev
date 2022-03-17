@@ -26,7 +26,7 @@ public class MonitorApplication {
         String envContext = env.getProperty("server.servlet.context-path");
         String port = envPort == null ? "8040" : envPort;
         String context = envContext == null ? "" : envContext;
-        String path = port + "" + context + "/login.html";
+        String path = port + "" + context + "/login";
         String druidPath = port + "" + context + "/druid";
         LOGGER.info("Access URLs:\n----------------------------------------------------------\n\t"
                         + "Local: \t\thttp://127.0.0.1:{}\n\t" + "External: \thttp://{}:{}\n\t"
