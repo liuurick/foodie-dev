@@ -33,10 +33,9 @@ public class FoodieAdminApplication {
         String port = envPort == null ? "8810" : envPort;
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/doc.html";
-        String druidPath = port + "" + context + "/druid";
+        String druidPath = port + "" + context + "/druid/login.html";
         LOGGER.info("Access URLs:\n----------------------------------------------------------\n\t"
-                        + "Local: \t\thttp://127.0.0.1:{}\n\t" + "External: \thttp://{}:{}\n\t"
-                        + "----------------------------------------------------------", path,
-                InetAddress.getLocalHost().getHostAddress(), path, druidPath);
+                        + "Local: \t\thttp://127.0.0.1:{}\n\t" + "External: \thttp://127.0.0.1:{}\n\t"
+                        + "----------------------------------------------------------", path, druidPath);
     }
 }

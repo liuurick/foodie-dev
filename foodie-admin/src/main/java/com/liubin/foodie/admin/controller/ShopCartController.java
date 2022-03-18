@@ -40,43 +40,43 @@ public class ShopCartController {
         return CommonResult.success();
     }
 
-    @GetMapping("/list")
-    public CommonResult<CartVo> list(HttpSession session) {
-        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
-        return cartService.list(user.getId());
-    }
-
-    @PutMapping("/{goodsId}")
-    public CommonResult<CartVo> update(@PathVariable Integer goodsId,
-                                     @Valid @RequestBody CartUpdateForm form,
-                                     HttpSession session, @PathVariable String goodsId) {
-        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
-        return cartService.update(user.getId(), productId, form);
-    }
-
-    @DeleteMapping("/{goodsId}")
-    public CommonResult<CartVo> delete(@PathVariable Integer goodsId,
-                                     HttpSession session) {
-        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
-        return cartService.delete(user.getId(), productId);
-    }
-
-    @PutMapping("/carts/selectAll")
-    public CommonResult<CartVo> selectAll(HttpSession session) {
-        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
-        return cartService.selectAll(user.getId());
-    }
-
-    @PutMapping("/carts/unSelectAll")
-    public CommonResult<CartVo> unSelectAll(HttpSession session) {
-        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
-        return cartService.unSelectAll(user.getId());
-    }
-
-    @GetMapping("/products/sum")
-    public CommonResult<Integer> sum(HttpSession session) {
-        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
-        return cartService.sum(user.getId());
-    }
+//    @GetMapping("/list")
+//    public CommonResult<CartVo> list(HttpSession session) {
+//        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
+//        return cartService.list(user.getId());
+//    }
+//
+//    @PutMapping("/{goodsId}")
+//    public CommonResult<CartVo> update(@PathVariable Integer goodsId,
+//                                     @Valid @RequestBody CartUpdateForm form,
+//                                     HttpSession session, @PathVariable String goodsId) {
+//        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
+//        return cartService.update(user.getId(), productId, form);
+//    }
+//
+//    @DeleteMapping("/{goodsId}")
+//    public CommonResult<CartVo> delete(@PathVariable Integer goodsId,
+//                                     HttpSession session) {
+//        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
+//        return cartService.delete(user.getId(), productId);
+//    }
+//
+//    @PutMapping("/carts/selectAll")
+//    public CommonResult<CartVo> selectAll(HttpSession session) {
+//        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
+//        return cartService.selectAll(user.getId());
+//    }
+//
+//    @PutMapping("/carts/unSelectAll")
+//    public CommonResult<CartVo> unSelectAll(HttpSession session) {
+//        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
+//        return cartService.unSelectAll(user.getId());
+//    }
+//
+//    @GetMapping("/products/sum")
+//    public CommonResult<Integer> sum(HttpSession session) {
+//        User user = (User) session.getAttribute(MallConst.CURRENT_USER);
+//        return cartService.sum(user.getId());
+//    }
 
 }
