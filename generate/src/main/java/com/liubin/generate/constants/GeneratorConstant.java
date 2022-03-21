@@ -1,6 +1,9 @@
-package com.liubin.generate.config;
+package com.liubin.generate.constants;
 
-public class Config {
+/**
+ * 代码生成器常量
+ */
+public class GeneratorConstant {
 
     /**
      * 包名：controller

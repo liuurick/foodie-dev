@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.generator.config.builder.Entity;
 import com.baomidou.mybatisplus.generator.config.builder.Mapper;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.liubin.generate.config.Config;
+import com.liubin.generate.constants.GeneratorConstant;
 import com.liubin.generate.bo.CodeGeneratorBo;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.util.StringUtils;
@@ -43,14 +43,14 @@ public class MyAutoGenerator {
 
         builder.fileOverride().author(bo.getAuthor());
 
-        String outDir = Config.OUTPUT_DIR;
+        String outDir = GeneratorConstant.OUTPUT_DIR;
         if (StringUtils.hasText(bo.getOutDir())) {
             outDir = bo.getOutDir();
         }
         builder.outputDir(outDir);
 
         DateType dateType = DateType.TIME_PACK;
-        if (!Config.MYSQL_VERSION.equalsIgnoreCase(bo.getJdkVersion())) {
+        if (!GeneratorConstant.MYSQL_VERSION.equalsIgnoreCase(bo.getJdkVersion())) {
             dateType = DateType.ONLY_DATE;
         }
         builder.dateType(dateType);
