@@ -1,5 +1,6 @@
 package com.liubin.foodie.admin.conf;
 
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,50 +23,30 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Swagger API相关配置
+ */
 @Configuration
 @EnableSwagger2WebMvc
+@EnableKnife4j
 public class SwaggerConfig {
 
-    @Value("${spring.application.name}")
-    private String applicationName;
-
     @Bean
-    public Docket createRestApi() {
+    public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.liubin.foodie"))
+                .apis(RequestHandlerSelectors.basePackage("com.liubin.foodie.admin.controller"))
                 .paths(PathSelectors.any())
-                .build()
-                .securitySchemes(Lists.newArrayList(apiKey()));
-    }
-
-    /**
-     * Swagger API基本信息
-     *
-     * @return springfox.documentation.service.ApiInfo
-     * @author YangYudi
-     * @date 2020/12/14 14:02
-     */
-    private ApiInfo apiInfo() {
-        Contact contact = new Contact("yudi", "https://www.yuque.com/kelisidiyanuodi", "529699377@qq.com");
-        return new ApiInfoBuilder()
-                .title(applicationName + " RESTFul APIs")
-                .description(applicationName + " swagger-ui")
-                .termsOfServiceUrl("http://localhost:9000/")
-                .contact(contact)
-                .version("1.0")
                 .build();
     }
 
-    /**
-     * 配置token类型为Bearer
-     *
-     * @return springfox.documentation.service.ApiKey
-     * @author YangYudi
-     * @date 2020/12/14 14:02
-     */
-    private ApiKey apiKey() {
-        return new ApiKey("BearerToken", "Authorization", "header");
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("核心业务")
+                .description("用户服务API文档")
+                .contact("liubin")
+                .version("1.0")
+                .build();
     }
 }
