@@ -24,7 +24,7 @@ public class FoodieGatewayApplication {
         String envContext = env.getProperty("server.servlet.context-path");
         String port = envPort == null ? "8830" : envPort;
         String context = envContext == null ? "" : envContext;
-        String path = port + "" + context + "/login.html";
+        String path = port + "" + context + "/doc.html";
         String druidPath = port + "" + context + "/druid";
         LOGGER.info("Access URLs:\n----------------------------------------------------------\n\t"
                         + "Local: \t\thttp://127.0.0.1:{}\n\t" + "External: \thttp://{}:{}\n\t"

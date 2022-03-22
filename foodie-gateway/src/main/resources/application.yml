@@ -8,16 +8,10 @@ spring:
           enabled: true
           lower-case-service-id: true #使用小写service-id
       routes: #配置路由路径
-        - id: foodie-auth
-          uri: lb://foodie-auth
-          predicates:
-            - Path=/foodie-auth/**
-          filters:
-            - StripPrefix=1
         - id: foodie-admin
           uri: lb://foodie-admin
           predicates:
-            - Path=/mall-admin/**
+            - Path=/foodie-admin/**
           filters:
             - StripPrefix=1
 
@@ -34,16 +28,16 @@ secure:
   ignore:
     urls: #配置白名单路径
       - "/doc.html"
-      - "/login.html"
       - "/swagger-resources/**"
       - "/swagger/**"
       - "/**/v2/api-docs"
-      - "/v2/api-docs"
+      - "/v2/api-docs/**"
       - "/**/*.js"
       - "/**/*.css"
       - "/**/*.png"
       - "/**/*.ico"
       - "/webjars/springfox-swagger-ui/**"
+      - "/actuator"
       - "/actuator/**"
       - "/mall-auth/oauth/token"
       - "/mall-auth/rsa/publicKey"

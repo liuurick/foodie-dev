@@ -1,34 +1,30 @@
-package com.liubin.foodie.admin.conf;
+package com.liubin.foodie.gateway.conf;
 
 import com.google.common.collect.Lists;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.codec.ServerCodecConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.AuthorizationScope;
 import springfox.documentation.service.Contact;
-import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.SecurityContext;
-import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
 @EnableSwagger2WebMvc
 public class SwaggerConfig {
 
-    @Value("${spring.application.name}")
-    private String applicationName;
-
+    /**
+     * 创建SwaggerApi
+     *
+     * @return springfox.documentation.spring.web.plugins.Docket
+     * @author YangYudi
+     * @date 2020/12/14 14:02
+     */
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -48,10 +44,10 @@ public class SwaggerConfig {
      * @date 2020/12/14 14:02
      */
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("yudi", "https://www.yuque.com/kelisidiyanuodi", "529699377@qq.com");
+        Contact contact = new Contact("yudi", "http://localhost:9000/doc.html", "529699377@qq.com");
         return new ApiInfoBuilder()
-                .title(applicationName + " RESTFul APIs")
-                .description(applicationName + " swagger-ui")
+                .title("course-online-swagger-ui RESTFul APIs")
+                .description("course-online-swagger-ui")
                 .termsOfServiceUrl("http://localhost:9000/")
                 .contact(contact)
                 .version("1.0")
@@ -67,5 +63,11 @@ public class SwaggerConfig {
      */
     private ApiKey apiKey() {
         return new ApiKey("BearerToken", "Authorization", "header");
+    }
+
+
+    @Bean
+    public ServerCodecConfigurer serverCodecConfigurer() {
+        return ServerCodecConfigurer.create();
     }
 }

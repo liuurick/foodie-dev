@@ -6,6 +6,8 @@ jasypt:
     password: lb
 
 spring:
+  application:
+    name: foodie-admin
   datasource:
     url: jdbc:mysql://81.68.71.90:3306/foodie?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
@@ -94,6 +96,12 @@ spring:
     multipart:
       enabled: true #开启文件上传
       max-file-size: 10MB #限制文件上传大小为10M
+  swagger:
+    basePackage: com.liubin.foodie.admin
+    author:
+      name: liubin
+    apiInfo:
+      termsOfServiceUrl: http://ip:${server.port}/${spring.application.name}
 mybatis:
   mapper-locations:
     - classpath:dao/*.xml
