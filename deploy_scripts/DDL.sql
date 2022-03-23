@@ -301,10 +301,10 @@ CREATE TABLE `sys_login_user`
     `login_mail`        varchar(50) DEFAULT NULL COMMENT '登录邮箱',
     `password`          varchar(64) DEFAULT NULL COMMENT '密码（MD5）',
     `login_status`      varchar(2)  DEFAULT NULL COMMENT '登录状态',
-    `last_login_time`   datetime                            DEFAULT NULL COMMENT '最后一次登录时间',
+    `last_login_time`   datetime    DEFAULT NULL COMMENT '最后一次登录时间',
     `last_login_ip`     varchar(20) DEFAULT NULL COMMENT '最后一次登录IP',
     `last_login_device` varchar(2)  DEFAULT NULL COMMENT '最后一次登录设备(PC,IOS...)',
-    `register_time`     datetime                            DEFAULT NULL COMMENT '注册时间',
+    `register_time`     datetime    DEFAULT NULL COMMENT '注册时间',
     `login_user_type`   varchar(2)  DEFAULT NULL COMMENT '登录用户类型(1:平台操作人员,2:客户,3:经纪人,4:系统用户)',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='登录用户表';
@@ -318,3 +318,32 @@ CREATE TABLE `sys_third_party_account`
     `third_party_account_type` varchar(2)   DEFAULT NULL COMMENT '第三方类型(1:微信，2：QQ 3：微博)',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='登录关联表';
+
+DROP TABLE IF EXISTS `sys_dict`;
+CREATE TABLE `sys_dict`
+(
+    `dict_id`     bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `name`        varchar(255) NOT NULL COMMENT '字典名称',
+    `description` varchar(255) DEFAULT NULL COMMENT '描述',
+    `create_by`   varchar(255) DEFAULT NULL COMMENT '创建者',
+    `update_by`   varchar(255) DEFAULT NULL COMMENT '更新者',
+    `create_time` datetime     DEFAULT NULL COMMENT '创建日期',
+    `update_time` datetime     DEFAULT NULL COMMENT '更新时间',
+    PRIMARY KEY (`dict_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='数据字典';
+
+DROP TABLE IF EXISTS `sys_dict_detail`;
+CREATE TABLE `sys_dict_detail`
+(
+    `detail_id`   bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `dict_id`     bigint(11) DEFAULT NULL COMMENT '字典id',
+    `label`       varchar(255) NOT NULL COMMENT '字典标签',
+    `value`       varchar(255) NOT NULL COMMENT '字典值',
+    `dict_sort`   int(5) DEFAULT NULL COMMENT '排序',
+    `create_by`   varchar(255) DEFAULT NULL COMMENT '创建者',
+    `update_by`   varchar(255) DEFAULT NULL COMMENT '更新者',
+    `create_time` datetime     DEFAULT NULL COMMENT '创建日期',
+    `update_time` datetime     DEFAULT NULL COMMENT '更新时间',
+    PRIMARY KEY (`detail_id`) USING BTREE,
+    KEY           `FK5tpkputc6d9nboxojdbgnpmyb` (`dict_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='数据字典详情';

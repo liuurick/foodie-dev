@@ -11,6 +11,7 @@ foodie-dev
 ├── foodie-admin -- 后台管理系统服务
 ├── foodie-pay -- 支付平台
 ├── foodie-portal -- 移动端商城系统服务
+├── foodie-logging -- 为系统的日志模块，其他模块如果需要记录日志需要引入该模块
 ├── foodie-demo -- 微服务远程调用测试服务
 └── config -- 配置中心存储的配置
 ```
