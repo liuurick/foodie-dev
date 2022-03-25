@@ -1,5 +1,5 @@
 server:
-  port: 8840
+  port: 8801
 spring:
   application:
     name: foodie-monitor

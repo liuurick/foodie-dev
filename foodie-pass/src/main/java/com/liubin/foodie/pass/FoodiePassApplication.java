@@ -22,7 +22,7 @@ public class FoodiePassApplication {
         Environment env = new SpringApplication(FoodiePassApplication.class).run(args).getEnvironment();
         String envPort = env.getProperty("server.port");
         String envContext = env.getProperty("server.servlet.context-path");
-        String port = envPort == null ? "8850" : envPort;
+        String port = envPort == null ? "8804" : envPort;
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/login.html";
         String druidPath = port + "" + context + "/druid";

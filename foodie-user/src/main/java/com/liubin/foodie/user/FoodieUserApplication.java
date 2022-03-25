@@ -19,7 +19,7 @@ public class FoodieUserApplication {
         Environment env = new SpringApplication(FoodieUserApplication.class).run(args).getEnvironment();
         String envPort = env.getProperty("server.port");
         String envContext = env.getProperty("server.servlet.context-path");
-        String port = envPort == null ? "8201" : envPort;
+        String port = envPort == null ? "8803" : envPort;
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/doc.html";
         String druidPath = port + "" + context + "/druid";

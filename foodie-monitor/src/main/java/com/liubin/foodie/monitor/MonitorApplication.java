@@ -24,7 +24,7 @@ public class MonitorApplication {
         Environment env = new SpringApplication(MonitorApplication.class).run(args).getEnvironment();
         String envPort = env.getProperty("server.port");
         String envContext = env.getProperty("server.servlet.context-path");
-        String port = envPort == null ? "8040" : envPort;
+        String port = envPort == null ? "8801" : envPort;
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/login";
         String druidPath = port + "" + context + "/druid";

@@ -30,7 +30,7 @@ public class FoodieAdminApplication {
         Environment env = new SpringApplication(FoodieAdminApplication.class).run(args).getEnvironment();
         String envPort = env.getProperty("server.port");
         String envContext = env.getProperty("server.servlet.context-path");
-        String port = envPort == null ? "8810" : envPort;
+        String port = envPort == null ? "8806" : envPort;
         String context = envContext == null ? "" : envContext;
         String path = port + "" + context + "/doc.html";
         String druidPath = port + "" + context + "/druid/login.html";
