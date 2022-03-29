@@ -2,10 +2,9 @@ package com.liubin.common.page;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.List;
+import lombok.Data;
 
 
 /**

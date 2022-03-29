@@ -33,4 +33,18 @@ public class Summary {
      * 忘记密码
      */
     public static final String FORGET_RESET_PASSWORD = "/api/forget/reset/password";
+
+    /*************************************鉴权中心***********************************/
+
+    /**
+     * 注册
+     */
+    public static final String AUTH_REGISTER_PATH = "/api/auth/register";
+
+    /*************************************通行证***********************************/
+
+    /**
+     * 登录
+     */
+    public static final String PASS_LOGIN_PATH = "/api/pass/login";
 }

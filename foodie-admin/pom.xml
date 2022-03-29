@@ -97,6 +97,11 @@
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.2</version>
         </dependency>
+        <!--JUnit + Mockito-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
 
         <!-- 阿里巴巴的druid数据源 -->
         <dependency>
