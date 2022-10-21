@@ -4,7 +4,7 @@
 foodie-dev
 ├── foodie-common       -- 工具类及通用代码模块
 ├── foodie-monitor 8801 -- 基于Spring Boot Admin的微服务监控中心
-├── foodie-auth    8802 -- 基于Spring Security Oauth2的统一的认证中心
+├── foodie-auth    8802 -- 基于sa-token实现的认证中心
 ├── foodie-user    8803 -- 用户中心
 ├── foodie-pass    8804 -- SSO单点登录
 ├── foodie-gateway 8805 -- 网关服务
