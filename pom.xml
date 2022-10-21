@@ -98,13 +98,13 @@
             </dependency>
 
             <!-- SpringCloud Alibaba 微服务 -->
-            <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-common-alibaba-bom</artifactId>
-                <version>${ruoyi.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.ruoyi</groupId>-->
+<!--                <artifactId>ruoyi-common-alibaba-bom</artifactId>-->
+<!--                <version>${ruoyi.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
 
             <!-- SpringBoot 依赖配置 -->
             <dependency>
@@ -125,22 +125,22 @@
             </dependency>
 
             <!-- common 的依赖配置-->
-            <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-common-bom</artifactId>
-                <version>${ruoyi.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.ruoyi</groupId>-->
+<!--                <artifactId>ruoyi-common-bom</artifactId>-->
+<!--                <version>${ruoyi.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
 
             <!-- api 的依赖配置-->
-            <dependency>
-                <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-api-bom</artifactId>
-                <version>${ruoyi.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.ruoyi</groupId>-->
+<!--                <artifactId>ruoyi-api-bom</artifactId>-->
+<!--                <version>${ruoyi.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
 
             <dependency>
                 <groupId>cn.dev33</groupId>
